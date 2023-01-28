@@ -1,6 +1,4 @@
-/*
- * Globals
- */
+
 
 /* Links */
 a,
@@ -51,7 +49,7 @@ body {
 @media screen and (max-width: 1256px) {
 
   body {
-    background-image: url('/img/omnis_home_phone.jpg');
+    background-image: url('../img/omnis_home_phone.jpg');
     background-size: cover;
   }
 
