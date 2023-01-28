@@ -1,0 +1,121 @@
+body {
+    height: auto;
+    width: 100%;
+    font-family: 'Kalam', cursive;
+    background-color: #283869;
+   
+}
+
+
+p {
+  font-size: 1.3em;
+}
+
+ header {
+    background-color: #283869;
+    height: 7em;
+
+}
+
+
+.nav-link {
+    color: white;
+    text-decoration-line: none;
+}
+
+.navbar {
+    position: sticky;
+    height: 4em;
+    color: white;
+    font-size: large;
+}
+
+/*
+ * Header
+ */
+
+ .topnav {
+    overflow: hidden;
+    background-color:#283869;
+    border-radius: 2em;
+    text-shadow: 3px;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+  
+  
+  .topnav a:hover, .dropdown:hover .dropbtn {
+    background-color: transparent;
+  }
+  
+  
+  @media screen and (max-width: 1256px) {
+    
+  .nav {
+      position: static;
+   }
+  
+    .topnav a {
+      display: none;
+      
+    }
+  
+    .justify-content-end {
+      position: relative;
+      width: fit-content;
+      margin: auto;
+    }
+    
+  
+    .topnav .navbar-brand {
+      display: block;
+      position: relative;
+      align-items: center;   
+  
+    }
+  
+    .topnav a.icon {
+      display:block;
+      color:aliceblue;
+      position: relative;
+      margin-top: auto;
+      margin-bottom: auto;
+      
+    }
+  
+    .topnav.responsive {
+      position: relative;
+      background-color: #283869;
+      border-radius: 2em;
+      
+    }
+
+    .topnav.responsive .icon {
+      display: block;
+      position: relative;
+      padding-bottom: 1em;
+      padding-top: 3em;
+    
+    }
+
+    .topnav.responsive a.nav-link {
+      display:block;
+      width: 100%;
+      padding-top: 0;
+      margin-top: 0;
+  
+    }
+
+    .topnav.responsive a.nav-link.pt-5 {
+      padding-top: 1em;
+    }
+ 
+    .topnav.responsive a.nav-link.navbar-brand {
+      display:none;    
+    } 
+  }
+
+
+
