@@ -50,7 +50,7 @@ body {
 
   body {
     background-image: url("../img/omnis_home_phone.jpg");
-    background-size: auto;
+    background-size: cover;
   }
 
 
