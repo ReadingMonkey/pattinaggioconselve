@@ -103,14 +103,12 @@ p {
     .topnav.responsive a.nav-link {
       display:block;
       width: 100%;
-      padding-top: 0;
-      margin-top: 0;
+    }
   
-    }
-
-    .topnav.responsive a.nav-link.pt-5 {
-      padding-top: 1em;
-    }
+  .topnav.responsive a.nav-link.pt-5.mx-3.mt-2{
+      display: flex;
+      justify-content: center;
+   }
  
     .topnav.responsive a.nav-link.navbar-brand {
       display:none;    
