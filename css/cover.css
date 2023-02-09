@@ -123,14 +123,14 @@ body {
   
   }
   .topnav.responsive a.nav-link {
-    float: left;
-    display:block;
-    width: 100%;
-    padding-top: 0;
-    margin-top: 0;
-    padding-left: 2em;
-
-  }
+      display:block;
+      width: 100%;
+    }
+  
+  .topnav.responsive a.nav-link.pt-5.mx-3.mt-2{
+      display: flex;
+      justify-content: center;
+   }
 
 
   .topnav.responsive a.nav-link.navbar-brand {
