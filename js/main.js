@@ -49,9 +49,6 @@ $(document).ready(function(){
         $('#content').load("../partials/contacts.html");
     });
 
-    $('#getmap').click(function(){
-        $('#content').load("../partials/contacts.html");
-    });
 
 });
 
