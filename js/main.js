@@ -1,7 +1,10 @@
 $(document).ready(function(){
     
-    var myToast = new bootstrap.Toast(document.getElementById('pdf-toast'));
-    myToast.show();
+    var toastElement = document.getElementById('pdf-toast');
+    if (toastElement) {
+        var myToast = new bootstrap.Toast(toastElement);
+        myToast.show();
+    }
 
 
     let url = window.location.href;
