@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
     var myToast = new bootstrap.Toast(document.getElementById('pdf-toast'));
     myToast.show();
-});
 
-$(document).ready(function(){
 
     let url = window.location.href;
     let page = url.split('#')[1];
