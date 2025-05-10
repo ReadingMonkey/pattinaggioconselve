@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function(){
     
     var myToast = new bootstrap.Toast(document.getElementById('pdf-toast'));
     myToast.show();
