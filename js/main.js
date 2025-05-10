@@ -49,6 +49,9 @@ $(document).ready(function(){
         $('#content').load("../partials/contacts.html");
     });
 
+    var myToast = new bootstrap.Toast(document.getElementById('pdf-toast'));
+    myToast.show();
+
 
 });
 
