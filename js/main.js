@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function () {
+    var myToast = new bootstrap.Toast(document.getElementById('pdf-toast'));
+    myToast.show();
+});
+
 $(document).ready(function(){
 
     let url = window.location.href;
@@ -48,9 +53,6 @@ $(document).ready(function(){
     $('#contacts').click(function(){
         $('#content').load("../partials/contacts.html");
     });
-
-    var myToast = new bootstrap.Toast(document.getElementById('pdf-toast'));
-    myToast.show();
 
 
 });
