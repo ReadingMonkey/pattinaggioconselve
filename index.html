@@ -68,7 +68,90 @@
                 </div>
             </div>
         </header>
-   
+
+
+    <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;"></canvas>
+
+        <div style="
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1000;
+  text-align: center;
+  user-select: none;
+">
+  <span style="
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 700;
+    color: gold;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5), 2px 2px 0 #000;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  ">🏆 Campioni d'Italia 🏆</span>
+</div>
+
+<script>
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+const COLORS = ['#7F77DD','#1D9E75','#D85A30','#378ADD','#D4537E','#EF9F27','#E24B4A','#639922'];
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+function Particle() { this.reset(true); }
+
+Particle.prototype.reset = function(initial) {
+  this.x = Math.random() * canvas.width;
+  this.y = initial ? Math.random() * canvas.height : -10;  // al primo giro già distribuiti
+  this.vx = (Math.random() - 0.5) * 2;
+  this.vy = Math.random() * 2 + 1.5;
+  this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+  this.w = Math.random() * 10 + 4;
+  this.h = Math.random() * 6 + 3;
+  this.rot = Math.random() * Math.PI * 2;
+  this.rotSpeed = (Math.random() - 0.5) * 0.08;
+  this.wobble = Math.random() * Math.PI * 2;
+  this.wobbleSpeed = Math.random() * 0.05 + 0.02;
+  this.shape = Math.random() > 0.4 ? 'rect' : 'circle';
+};
+
+Particle.prototype.update = function() {
+  this.wobble += this.wobbleSpeed;
+  this.x += this.vx + Math.sin(this.wobble) * 0.8;
+  this.y += this.vy;
+  this.rot += this.rotSpeed;
+  if (this.y > canvas.height + 10) this.reset(false);
+};
+
+Particle.prototype.draw = function() {
+  ctx.save();
+  ctx.translate(this.x, this.y);
+  ctx.rotate(this.rot);
+  ctx.fillStyle = this.color;
+  if (this.shape === 'rect') {
+    ctx.fillRect(-this.w/2, -this.h/2, this.w, this.h);
+  } else {
+    ctx.beginPath();
+    ctx.ellipse(0, 0, this.w/2, this.h/2, 0, 0, Math.PI*2);
+    ctx.fill();
+  }
+  ctx.restore();
+};
+
+const particles = Array.from({length: 120}, () => new Particle());
+
+(function loop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(loop);
+})();
+</script>
    
 
     <main role="main" class="inner cover">
