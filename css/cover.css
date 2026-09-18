@@ -37,7 +37,7 @@ body {
   -ms-flex-pack: center;
   -webkit-box-pack: center;
   justify-content: center;
-  background-image: url("../img/omnis_home.jpg");
+  background-image: url("../img/main_cover.jpeg");
   background-size: auto;
   color: #fff;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
