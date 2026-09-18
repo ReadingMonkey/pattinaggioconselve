@@ -10,7 +10,7 @@ $(document).ready(function(){
                     <h3 class="card-title"><i><b>${data[i]['Nome']}</b></i></h3>
                     <p class="card-text">${data[i]['Descrizione']}</p>
                 
-                    <p class="card-text"><b>Numero atleti: </b>${data[i]['Atleti']}</p>
+                    <p class="card-text"><b>Età: </b>${data[i]['Atleti']}</p>
                 
                     <p class="card-text"><p>${data[i]['Orari']}</p>
                         <a href="https://www.pattinaggioconselve.it/page.html#contacts" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
