@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // Inserisci l'URL principale di distribuzione Apps Script (/exec)
-    const appUrl = "https://script.google.com/macros/s/AKfycbyoqxxnt1jol5VKyaqoY7NIcN719dnCgjifr0q6k3PRhc3sCJm_8QVSDGDyaHuOPzcbNw/exec";
+    const appUrl = "https://script.google.com/macros/s/AKfycbzy0DUKJClnnBrORbJfRpu0FwNxy6QtcCW_ced2xUY-SDEOV-TlTVmiB7xJrIk4sxwWqA/exec";
 
     fetch(appUrl)
         .then(response => {
