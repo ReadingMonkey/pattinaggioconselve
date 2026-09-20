@@ -91,7 +91,6 @@ $(document).ready(async function() {
     }
 
     // 2. Avvio della galleria immagini
-    if (typeof loadGallery === "function") {
-        loadGallery();
-    }
+    await loadGallery();
+    
 });
