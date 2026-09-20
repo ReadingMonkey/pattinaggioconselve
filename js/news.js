@@ -53,26 +53,43 @@ async function loadGallery() {
 }
 
 $(document).ready(async function() {
+
+    // 1. Caricamento dinamico degli iFrame nel Carousel
     try {
-        // 1. Aspetta il completamento della chiamata AJAX
-        const data = await $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbxEfogdhjb9y7WidXORRd8PhuWtw0tedKLpSUp3SELaF2bHB9oXrO790lu5otopjVvJ/exec"
-        });
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxEfogdhjb9y7WidXORRd8PhuWtw0tedKLpSUp3SELaF2bHB9oXrO790lu5otopjVvJ/exec");
+        let data = await response.json();
 
-        // 2. Popola il carousel con i dati ricevuti
-        for (let i = 0; i < data.length; i++) {
-            $('#iframe').append(`
-                <div class="carousel-item mb-5"> 
-                    ${data[i]['iFrame']}
-                </div>
-            `);
+        // Se la risposta è una stringa invece di un oggetto/array, la convertiamo
+        if (typeof data === "string") {
+            data = JSON.parse(data);
         }
-        $('.carousel-item:first').addClass('active');
 
-        // 3. Ora avvia e aspetta il caricamento della galleria
-        await loadGallery();
+        console.log("Dati ricevuti da Apps Script:", data);
+
+        // Estraiamo l'array corretto (gestisce sia array diretti che strutture { status, data })
+        const items = Array.isArray(data) ? data : (data.data || []);
+
+        if (items.length > 0) {
+            items.forEach((item, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                const iframeContent = item.iFrame || item.iframe || item;
+
+                $('#iframe').append(`
+                    <div class="carousel-item mb-5 ${activeClass}"> 
+                        ${iframeContent}
+                    </div>
+                `);
+            });
+        } else {
+            console.warn("Nessun elemento iFrame trovato nella risposta.");
+        }
 
     } catch (error) {
-        console.error("Errore durante il caricamento dei dati:", error);
+        console.error("Errore durante il caricamento degli iFrame:", error);
+    }
+
+    // 2. Avvio della galleria immagini
+    if (typeof loadGallery === "function") {
+        loadGallery();
     }
 });
