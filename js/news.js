@@ -12,12 +12,12 @@ async function loadGallery() {
             return;
         }
 
-        console.log(result);
+        console.log("Galleria caricata:", result);
 
         const images = result.data;
         let htmlContent = "";
 
-        // Raggruppiamo le immagini a blocchi di 3 per mantenere la tua struttura a righe (<div class="row">)
+        // Raggruppiamo le immagini a blocchi di 3
         for (let i = 0; i < images.length; i += 3) {
             const chunk = images.slice(i, i + 3);
             
@@ -28,15 +28,15 @@ async function loadGallery() {
                     <div class="col-sm">
                         <img class="img-thumbnail rounded px-auto d-block" 
                              src="${img.directUrl}" 
-                             alt="${img.name}"
+                             alt="${img.name || 'Immagine galleria'}"
                              loading="lazy">
                     </div>
                 `;
             });
 
-            // Se l'ultima riga ha meno di 3 immagini, aggiungiamo colonne vuote per mantenere la griglia bilanciata
+            // Se l'ultima riga ha meno di 3 immagini, aggiungiamo colonne vuote
             const remainingCols = 3 - chunk.length;
-            for (let j = 0; j = remainingCols; j++) {
+            for (let j = 0; j < remainingCols; j++) {
                 htmlContent += '<div class="col-sm"></div>';
             }
 
@@ -61,14 +61,12 @@ $(document).ready(async function() {
         const response = await fetch("https://script.google.com/macros/s/AKfycbxEfogdhjb9y7WidXORRd8PhuWtw0tedKLpSUp3SELaF2bHB9oXrO790lu5otopjVvJ/exec");
         let data = await response.json();
 
-        // Se la risposta è una stringa invece di un oggetto/array, la convertiamo
         if (typeof data === "string") {
             data = JSON.parse(data);
         }
 
-        console.log("Dati ricevuti da Apps Script:", data);
+        console.log("Dati ricevuti da Apps Script (iFrame):", data);
 
-        // Estraiamo l'array corretto (gestisce sia array diretti che strutture { status, data })
         const items = Array.isArray(data) ? data : (data.data || []);
 
         if (items.length > 0) {
