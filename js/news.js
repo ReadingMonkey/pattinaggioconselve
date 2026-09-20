@@ -12,6 +12,8 @@ async function loadGallery() {
             return;
         }
 
+        console.log(result);
+
         const images = result.data;
         let htmlContent = "";
 
