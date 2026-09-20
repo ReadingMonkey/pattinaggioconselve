@@ -51,9 +51,18 @@ body {
 @media screen and (max-width: 1256px) {
 
   body {
-    background-image: url("../img/mobile_cover.jpeg");
-    background-size:auto;
-  }
+  background-image: url("../img/mobile_cover.jpeg");
+  background-size: contain;       /* Mostra l'immagine completa senza tagli */
+  background-repeat: no-repeat;  /* Evita che l'immagine si ripeta se lo schermo è più grande */
+  background-position: center top;/* Posiziona l'immagine in alto al centro */
+  
+  /* Garantisce che il body occupi l'intera altezza dello schermo */
+  min-height: 100vh;
+  margin: 0;
+  
+  /* Opzionale: imposta un colore di sfondo per riempire gli spazi vuoti ai lati o in basso */
+  background-color: #000000; 
+}
 
 
 }
