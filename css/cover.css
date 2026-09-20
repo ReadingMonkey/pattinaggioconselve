@@ -51,7 +51,7 @@ body {
 @media screen and (max-width: 1256px) {
 
   body {
-    background-image: url("../img/main_cover.jpeg");
+    background-image: url("../img/mobile_cover.jpeg");
     background-size:auto;
   }
 
