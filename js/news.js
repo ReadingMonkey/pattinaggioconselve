@@ -88,6 +88,61 @@ $(document).ready(async function() {
         console.error("Errore durante il caricamento degli iFrame:", error);
     }
 
+    const apiUrl = "https://script.google.com/macros/s/AKfycby0EfO5Gj3Y-EgYN__bELF-otxk8wjsQu3jfxxgPkg7GS6oMxRaQOwGxyRY4wJV6rMC/exec";
+    
+    const carouselInner = document.getElementById("carousel-events-inner");
+    const carouselIndicators = document.getElementById("carousel-events-indicators");
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(res => {
+        if (res.status === "success" && Array.isArray(res.data) && res.data.length > 0) {
+          // Pulisce il contenuto statico/di caricamento
+          carouselInner.innerHTML = "";
+          carouselIndicators.innerHTML = "";
+
+          res.data.forEach((item, index) => {
+            const isActive = index === 0;
+
+            // Rimuove l'estensione dal nome del file per usarlo come titolo pulito (es. "gala_2024.jpg" -> "gala_2024")
+            const titleText = item.name.replace(/\.[^/.]+$/, "");
+
+            // 1. Crea la diapositiva (carousel-item)
+            const itemDiv = document.createElement("div");
+            itemDiv.className = `carousel-item mb-5 ${isActive ? "active" : ""}`;
+
+            itemDiv.innerHTML = `
+                <div class="row justify-content-center">
+                    <img src="${item.directUrl}" alt="${titleText}" class="img-thumbnail" style="width: 20em;">
+                </div>
+            `;
+            carouselInner.appendChild(itemDiv);
+
+            // 2. Crea l'indicatore (pulsante in basso)
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.style.width = "2em";
+            btn.setAttribute("data-bs-target", "#locandine");
+            btn.setAttribute("data-bs-slide-to", index);
+            btn.setAttribute("aria-label", `Slide ${index + 1}`);
+
+            if (isActive) {
+              btn.className = "active";
+              btn.setAttribute("aria-current", "true");
+            }
+
+            carouselIndicators.appendChild(btn);
+          });
+        } else {
+          carouselInner.innerHTML = '<div class="py-5 text-muted">Nessun evento disponibile.</div>';
+        }
+      })
+      .catch(error => {
+        console.error("Errore nel recupero degli eventi:", error);
+        carouselInner.innerHTML = '<div class="py-5 text-danger">Impossibile caricare gli eventi al momento.</div>';
+      });
+  });
+
     // 2. Avvio della galleria immagini
     await loadGallery();
     
