@@ -1,7 +1,3 @@
-/*
- * Globals
- */
-
 /* Links */
 a,
 a:focus,
@@ -9,67 +5,52 @@ a:hover {
   color: #fff;
 }
 
-/* Custom default button */
+/* Bottone default personalizzato */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
   color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
+  text-shadow: none; /* Evita l'ereditarietà dal body */
   background-color: #fff;
-  border: .05rem solid #fff;
+  border: 0.05rem solid #fff;
 }
 
 
-/*
- * Base structure
- */
+/* =========================================================
+   2. STRUTTURA BASE (Desktop)
+   ========================================================= */
 
 html,
 body {
   height: 100%;
-;
 }
 
 body {
-  display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
-  -ms-flex-pack: center;
-  -webkit-box-pack: center;
   justify-content: center;
-  background-image: url("../img/main_cover.jpeg");
-  background-size: auto;
+  margin: 0;
+
   color: #fff;
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+
+  /* Sfondo desktop */
+  background-image: url("../img/main_cover.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
 }
 
 .cover-container {
   max-width: 100%;
 }
 
-@media screen and (max-width: 1256px) {
 
-  body {
-  background-image: url("../img/mobile_cover.jpeg");
-  background-size: cover;          /* Copre tutto lo schermo */
-  background-position: center top; /* Mantiene visibile la parte alta dell'immagine */
-  background-repeat: no-repeat;
-  
-  /* Usa 100dvh per gestire bene la barra degli indirizzi sui browser mobile */
-  min-height: 100dvh; 
-  margin: 0;
-}
+/* =========================================================
+   3. HEADER / NAV
+   ========================================================= */
 
-
-}
-
-
-/*
- * Header
- */
-
- .topnav {
+.topnav {
   overflow: hidden;
   background-color: transparent;
 }
@@ -78,79 +59,9 @@ body {
   display: none;
 }
 
-
-.topnav a:hover, .dropdown:hover .dropbtn {
+.topnav a:hover,
+.dropdown:hover .dropbtn {
   background-color: transparent;
-}
-
-
-@media screen and (max-width: 1256px) {
-  
-.nav {
-    position: static;
- }
-
-  .topnav a {
-    display: none;
-  }
-
-  .justify-content-end {
-    position: relative;
-    width: fit-content;
-    margin: auto;
-  }
-  
-
-  .topnav .navbar-brand {
-    display: block;
-    position: relative;
-    align-items: center;   
-
-  }
-
-  .topnav a.icon {
-    display:block;
-    color: #fff;
-    position: relative;
-    margin-top: auto;
-    margin-bottom: auto;
-    
-  }
-
-  .topnav.responsive {
-    position: relative;
-    background-color: #283869;
-    border-radius: 2em;
-  }
-  .topnav.responsive .icon {
-    display: block;
-    position: relative;
-    padding-bottom: 1em;
-    padding-top: 3em;
-  
-  
-  }
-  .topnav.responsive a.nav-link {
-
-    display:block;
-    width: 100%;
-  }
-
-  .topnav.responsive a.nav-link.pt-5.mx-3.mt-2{
-
-    display: flex;
-    justify-content: center;
-
-
-  }
-
-
-  .topnav.responsive a.nav-link.navbar-brand {
-    display:none;
-
-  
-  }
-
 }
 
 .masthead {
@@ -165,17 +76,16 @@ body {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.938);
   background-color: transparent;
-  border-bottom: transparent;
-  text-shadow: #283869;
+  /* FIX: prima era "border-bottom: transparent" (senza spessore/stile),
+     quindi l'underline della voce .active non compariva mai.
+     Se NON vuoi la sottolineatura bianca, rimetti: border-bottom: 0; */
+  border-bottom: 0.25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
   color: #283869;
-  text-shadow: #fff;
 }
-
-
 
 .nav-masthead .active {
   color: #fff;
@@ -183,15 +93,16 @@ body {
 }
 
 
+/* =========================================================
+   4. COVER
+   ========================================================= */
 
-/*
- * Cover
- */
 .cover {
   padding: 0 1.5rem;
 }
+
 .cover .btn-lg {
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   font-weight: 700;
 }
 
@@ -200,48 +111,41 @@ body {
 }
 
 .btn {
-  color: white;
+  color: #fff;
   background-color: #283869;
 }
 
-@media screen and (max-width: 1256px) {
-  .cover-heading {
-    font-size: 2.5em;
-    padding-left: 30%;
-  }
 
-  .cover-container {
-    width: 100%;
-  }
-
-}
-
-
+/* =========================================================
+   5. BOTTONE .button-18
+   ========================================================= */
 
 .button-18 {
   align-items: center;
-  background-color:#283869;
-  border: 3px;
-  border-color: #fff;
+  background-color: #283869;
+  /* FIX: prima "border: 3px" non era valido (mancava lo stile). */
+  border: 3px solid #fff;
   border-radius: 100px;
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
   display: inline-flex;
-  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 20px;
   max-width: 15em;
   min-height: 40px;
-  min-width: 0px;
+  min-width: 0;
   overflow: hidden;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
   touch-action: manipulation;
-  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+              box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+              color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   user-select: none;
   -webkit-user-select: none;
   vertical-align: middle;
@@ -249,26 +153,138 @@ body {
 
 .button-18:active {
   background: #09223b;
-  color: rgb(255, 255, 255, .7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.button-18:disabled { 
+.button-18:disabled {
   cursor: not-allowed;
-  background: rgba(0, 0, 0, .08);
-  color: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.3);
 }
 
-/*
- * Footer
- */
+
+/* =========================================================
+   6. FOOTER
+   ========================================================= */
+
 .mastfoot {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
-@media screen and (max-width: 1256px) {
-  .mastfoot p {
+
+/* =========================================================
+   7. RESPONSIVE
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   7a. MENU HAMBURGER
+   Menu esteso SOLO su desktop (mouse + schermo largo).
+   Hamburger se: schermo stretto (<= 1256px)  OPPURE  dispositivo
+   touch (pointer: coarse) -> tutti gli iPad/tablet in qualsiasi
+   orientamento e i telefoni.
+   --------------------------------------------------------- */
+@media (max-width: 1256px), (pointer: coarse) {
+
+  .nav {
+    position: static;
+  }
+
+  .topnav a {
     display: none;
   }
 
+  .justify-content-end {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+  }
+
+  .topnav .navbar-brand {
+    display: block;
+    position: relative;
+    align-items: center;
+  }
+
+  .topnav a.icon {
+    display: block;
+    color: #fff;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .topnav.responsive {
+    position: relative;
+    background-color: #283869;
+    border-radius: 2em;
+  }
+
+  .topnav.responsive .icon {
+    display: block;
+    position: relative;
+    padding-bottom: 1em;
+    padding-top: 3em;
+  }
+
+  .topnav.responsive a.nav-link {
+    display: block;
+    width: 100%;
+  }
+
+  .topnav.responsive a.nav-link.pt-5.mx-3.mt-2 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .topnav.responsive a.nav-link.navbar-brand {
+    display: none;
+  }
 }
 
+
+/* ---------------------------------------------------------
+   7b. TABLET + SMARTPHONE — layout/sfondo (in base alla larghezza)
+   --------------------------------------------------------- */
+@media screen and (max-width: 1256px) {
+
+  body {
+    background-image: url("../img/mobile_cover.jpeg");
+    background-size: cover;            /* Copre tutto lo schermo */
+    background-position: center top;  /* Mantiene visibile la parte alta */
+    background-repeat: no-repeat;
+    min-height: 100vh;                /* fallback per browser senza dvh */
+    min-height: 100dvh;               /* gestisce bene la barra indirizzi mobile */
+  }
+
+  .cover-container {
+    width: 100%;
+  }
+
+  .mastfoot p {
+    display: none;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   7c. SOLO TABLET (768px – 1256px)
+   --------------------------------------------------------- */
+@media screen and (min-width: 768px) and (max-width: 1256px) {
+
+  .cover-heading {
+    font-size: 3.5em;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   7d. SOLO SMARTPHONE (<= 767.98px)
+   --------------------------------------------------------- */
+@media screen and (max-width: 767.98px) {
+
+  .cover-heading {
+    font-size: 2.5em;
+    padding-left: 30%; /* Offset per non coprire il soggetto della mobile_cover.
+                          Regola/rimuovi in base alla tua immagine. */
+  }
+}
