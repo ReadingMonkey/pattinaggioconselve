@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+$(document).ready(function(){
     const apiUrl = "https://script.google.com/macros/s/AKfycbxGEYTn5Y_-bk_YNyN3nRj38kv0dZU_Fky6lvaW77yJATJpeTsmpk5ddSPYhe1hgP7_zg/exec";
     const lista = document.getElementById("lista-documenti");
 
